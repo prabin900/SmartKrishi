@@ -3,6 +3,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../config/app_config.dart';
+
 class SecureStorage {
   static const _storage = FlutterSecureStorage();
   static const _tokenKey = 'jwt_token';
@@ -117,18 +119,13 @@ class SecureStorage {
 
 class ApiClient {
   late final Dio dio;
-  static String get baseUrl {
-    if (kIsWeb) {
-      return 'http://localhost:8080/api';
-    }
-    return 'http://10.0.2.2:8080/api';
-  }
+  static String get baseUrl => AppConfig.apiBaseUrl;
 
   ApiClient() {
     dio = Dio(BaseOptions(
       baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 8),
-      receiveTimeout: const Duration(seconds: 8),
+      connectTimeout: const Duration(seconds: 15),
+      receiveTimeout: const Duration(seconds: 15),
     ));
 
     dio.interceptors.add(InterceptorsWrapper(

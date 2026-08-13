@@ -320,9 +320,9 @@ class _SalesAnalyticsPageState extends ConsumerState<SalesAnalyticsPage> {
                                                 duration: Duration(milliseconds: 400 + i * 40),
                                                 curve: Curves.easeOut,
                                                 height: 120 * ratio,
-                                                decoration: BoxDecoration(
-                                                  color: const Color(0xFF2E7D32),
-                                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(5)),
+                                                decoration: const BoxDecoration(
+                                                  color: Color(0xFF2E7D32),
+                                                  borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
                                                 ),
                                               ),
                                             ),

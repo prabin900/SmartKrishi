@@ -1500,11 +1500,6 @@ class _CustomerDashboardState extends ConsumerState<CustomerDashboard> {
                     statusText = Colors.red.shade900;
                     statusDisplay = '❌ Declined by Farmer';
                     break;
-                    statusDisplay = '❌ Declined by Farmer';
-                    break;
-                    statusText = Colors.red.shade900;
-                    statusDisplay = '❌ Declined by Farmer';
-                    break;
                   case 'PENDING':
                   default:
                     statusBg = Colors.amber.shade100;

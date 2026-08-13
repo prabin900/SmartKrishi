@@ -510,8 +510,8 @@ class _FarmerDashboardState extends ConsumerState<FarmerDashboard> {
                 selected: _visitFilterType == 1,
                 selectedColor: const Color(0xFFFFF3E0),
                 side: BorderSide(color: _visitFilterType == 1 ? const Color(0xFFE65100) : Colors.grey.shade300),
-                labelStyle: TextStyle(
-                  color: const Color(0xFFE65100),
+                labelStyle: const TextStyle(
+                  color: Color(0xFFE65100),
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                 ),
@@ -530,8 +530,8 @@ class _FarmerDashboardState extends ConsumerState<FarmerDashboard> {
                 selected: _visitFilterType == 2,
                 selectedColor: const Color(0xFFE8F5E9),
                 side: BorderSide(color: _visitFilterType == 2 ? const Color(0xFF2E7D32) : Colors.grey.shade300),
-                labelStyle: TextStyle(
-                  color: const Color(0xFF2E7D32),
+                labelStyle: const TextStyle(
+                  color: Color(0xFF2E7D32),
                   fontWeight: FontWeight.bold,
                   fontSize: 12,
                 ),
@@ -1379,11 +1379,11 @@ class _FarmerDashboardState extends ConsumerState<FarmerDashboard> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: [
-            const Icon(Icons.agriculture, color: Color(0xFF2E7D32), size: 22),
-            const SizedBox(width: 8),
-            const Text('Farmer Console', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+            Icon(Icons.agriculture, color: Color(0xFF2E7D32), size: 22),
+            SizedBox(width: 8),
+            Text('Farmer Console', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
           ],
         ),
         backgroundColor: Colors.white,
@@ -2004,14 +2004,14 @@ class _FarmerDashboardState extends ConsumerState<FarmerDashboard> {
           SizedBox(width: 8),
           Text('Edit Farm Details'),
         ]),
-        content: Column(
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const TextField(decoration: InputDecoration(labelText: 'Farm Name', prefixIcon: Icon(Icons.store_outlined))),
-            const SizedBox(height: 12),
-            const TextField(decoration: InputDecoration(labelText: 'Location', prefixIcon: Icon(Icons.location_on_outlined))),
-            const SizedBox(height: 12),
-            const TextField(decoration: InputDecoration(labelText: 'Description', prefixIcon: Icon(Icons.description_outlined)), maxLines: 2),
+            TextField(decoration: InputDecoration(labelText: 'Farm Name', prefixIcon: Icon(Icons.store_outlined))),
+            SizedBox(height: 12),
+            TextField(decoration: InputDecoration(labelText: 'Location', prefixIcon: Icon(Icons.location_on_outlined))),
+            SizedBox(height: 12),
+            TextField(decoration: InputDecoration(labelText: 'Description', prefixIcon: Icon(Icons.description_outlined)), maxLines: 2),
           ],
         ),
         actions: [
