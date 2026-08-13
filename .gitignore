@@ -13,3 +13,6 @@ scratch/
 target/
 build/
 *.log
+
+# Databases
+backend/mongodb-data/
