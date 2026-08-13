@@ -34,6 +34,9 @@ public class DatabaseSeeder implements CommandLineRunner {
     @Autowired
     private com.smartkrishi.backend.repositories.FarmerProfileRepository farmerProfileRepository;
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
     @Override
     public void run(String... args) throws Exception {
         // 0. Deduplicate users before seeding
@@ -128,16 +131,20 @@ public class DatabaseSeeder implements CommandLineRunner {
             );
             try {
                 authService.registerUser(req);
-                List<User> seededUsers = userRepository.findAllByEmail(email);
-                if (!seededUsers.isEmpty()) {
-                    User u = seededUsers.get(0);
-                    u.setEmailVerified(true);
-                    userRepository.save(u);
-                }
-                System.out.println("Seeded default account: " + email + " with role: " + role);
             } catch (Exception e) {
                 System.err.println("Failed to seed account " + email + ": " + e.getMessage());
             }
         }
+
+        // Always guarantee that demo accounts are verified, active, and have the correct password
+        List<User> seededUsers = userRepository.findAllByEmail(email);
+        for (User u : seededUsers) {
+            u.setEmailVerified(true);
+            u.setActive(true);
+            u.setVerificationCode(null);
+            u.setPassword(passwordEncoder.encode("password123"));
+            userRepository.save(u);
+        }
+        System.out.println("Verified & configured demo account: " + email + " with role: " + role);
     }
 }

@@ -134,11 +134,27 @@ public class AuthService {
         return new MessageResponse("User registered successfully!");
     }
 
+    private boolean isPreVerifiedAccount(String email) {
+        if (email == null) return false;
+        String e = email.trim().toLowerCase();
+        return e.equals("farmer@smartkrishi.com.np") ||
+               e.equals("customer@smartkrishi.com.np") ||
+               e.equals("delivery@smartkrishi.com.np") ||
+               e.equals("business@smartkrishi.com.np") ||
+               e.equals("admin@smartkrishi.com.np");
+    }
+
     public JwtResponse authenticateUser(LoginRequest request) {
         org.slf4j.LoggerFactory.getLogger(AuthService.class).info("Received login request for email: {}", request.email());
 
         User user = userRepository.findByEmail(request.email()).orElse(null);
-        if (user != null && !user.isEmailVerified()) {
+        if (user != null && isPreVerifiedAccount(request.email())) {
+            if (!user.isEmailVerified()) {
+                user.setEmailVerified(true);
+                user.setUpdatedAt(Instant.now());
+                userRepository.save(user);
+            }
+        } else if (user != null && !user.isEmailVerified()) {
             throw new RuntimeException("Error: Email is not verified! Please enter the 6-digit confirmation OTP sent to your email (" + request.email() + ") to activate your account before logging in.");
         }
 
