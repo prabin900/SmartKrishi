@@ -1,0 +1,15 @@
+# Environment & Secrets
+.env
+*.env
+
+# Backup & Local Tools
+mongo-backup/
+tools/
+scratch/
+
+# IDE & Build
+.idea/
+.vscode/
+target/
+build/
+*.log

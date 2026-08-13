@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "662989758480",
+    "project_id": "smartkrishi-e068d",
+    "storage_bucket": "smartkrishi-e068d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662989758480:android:ea1b9bc3f1e6fd20d16a95",
+        "android_client_info": {
+          "package_name": "com.smartkrishi.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjnV0WsMs3FhL9VC7kXxATwl3Du61fElg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
