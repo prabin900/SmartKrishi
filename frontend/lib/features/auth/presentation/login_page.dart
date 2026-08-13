@@ -330,7 +330,31 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         ? const CircularProgressIndicator(color: Colors.white)
                         : const Text('Login', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 16),
+                  const Row(
+                    children: [
+                      Expanded(child: Divider()),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: Text('Demo Accounts (No OTP Required)', style: TextStyle(fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w600)),
+                      ),
+                      Expanded(child: Divider()),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 6,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      _buildDemoChip('🌾 Farmer', 'farmer@smartkrishi.com.np'),
+                      _buildDemoChip('🛒 Customer', 'customer@smartkrishi.com.np'),
+                      _buildDemoChip('🏢 Business', 'business@smartkrishi.com.np'),
+                      _buildDemoChip('🚚 Delivery', 'delivery@smartkrishi.com.np'),
+                      _buildDemoChip('🛡️ Admin', 'admin@smartkrishi.com.np'),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                   Wrap(
                     alignment: WrapAlignment.center,
                     crossAxisAlignment: WrapCrossAlignment.center,
@@ -348,6 +372,20 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildDemoChip(String label, String email) {
+    return ActionChip(
+      label: Text(label, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF0D631B))),
+      backgroundColor: const Color(0xFFE8F5E9),
+      side: const BorderSide(color: Color(0xFFA5D6A7)),
+      onPressed: () {
+        setState(() {
+          _emailController.text = email;
+          _passwordController.text = 'password123';
+        });
+      },
     );
   }
 }
